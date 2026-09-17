@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Genv Tech - Official Letterhead</title>
+    <style>
+        /* A4 Print Setup */
+        @page { size: A4; margin: 0; }
+        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #e2e8f0; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        
+        /* The Physical Paper */
+        .a4-sheet { background-color: white; width: 210mm; min-height: 297mm; padding: 25mm 20mm; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }
+        
+        /* Letterhead Header */
+        .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #1e293b; padding-bottom: 15px; margin-bottom: 25px; }
+        .logo-area { width: 280px; } /* Widened to fit the corrected Pulse Ring spacing */
+        .company-info { text-align: right; color: #475569; font-size: 11px; line-height: 1.6; padding-top: 5px; }
+        .company-info strong { color: #1e293b; }
+        .company-name-text { font-size: 16px; font-weight: 800; color: #1e293b; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+        /* Letter Content */
+        .ref-date { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 40px; font-size: 13px; color: #1e293b; }
+        .letter-body { font-size: 14px; line-height: 1.6; color: #1e293b; }
+        .letter-body h2 { font-size: 15px; text-align: center; text-decoration: underline; margin-bottom: 30px; text-transform: uppercase;}
+        .letter-body p { margin-bottom: 15px; text-align: justify; }
+        
+        /* Signature & Stamp Area */
+        .auth-area { margin-top: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
+        .signature-block { width: 250px; }
+        .signature-line { width: 100%; border-bottom: 1px solid #1e293b; margin-bottom: 8px; }
+        .stamp-block { width: 150px; height: 150px; border: 1px dashed #cbd5e1; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #94a3b8; font-size: 11px; text-align: center; }
+
+        /* Footer */
+        .footer { position: absolute; bottom: 15mm; left: 20mm; right: 20mm; text-align: center; font-size: 10px; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+
+        /* Browser Print Override */
+        @media print {
+            body { background: none; padding: 0; }
+            .a4-sheet { box-shadow: none; width: 100%; height: 100%; padding: 25mm 20mm; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="a4-sheet">
+    
+    <!-- HEADER -->
+    <div class="header">
+        <div class="logo-area">
+            <!-- Finalized Pulse Ring Master SVG -->
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 140" width="100%" height="auto">
+                <defs>
+                    <linearGradient id="grad11_2" x1="100%" y1="0%" x2="0%" y2="100%">
+                        <stop offset="0%" style="stop-color:#d946ef;stop-opacity:1" />
+                        <stop offset="50%" style="stop-color:#a855f7;stop-opacity:1" />
+                        <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
+                    </linearGradient>
+                </defs>
+                <circle cx="75" cy="70" r="46" fill="none" stroke="url(#grad11_2)" stroke-width="8" stroke-dasharray="75 15 25 15 30 25" stroke-linecap="round" transform="rotate(-45 75 70)"/>
+                <path d="M 55 48 L 95 48" stroke="#0f172a" stroke-width="12" stroke-linecap="round"/>
+                <path d="M 55 68 L 72 68" stroke="#d946ef" stroke-width="12" stroke-linecap="round"/>
+                <path d="M 55 88 L 95 88 L 95 68 L 86 68" fill="none" stroke="#0f172a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+                <text x="145" y="82" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="900" fill="#0f172a" letter-spacing="2">GENV</text>
+                <text x="315" y="82" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="52" font-weight="300" fill="#64748b" letter-spacing="1">TECH</text>
+                <text x="149" y="112" font-family="'Segoe UI', Roboto, Helvetica, Arial, sans-serif" font-size="13" font-weight="800" letter-spacing="8" fill="#8b5cf6">SOLUTIONS</text>
+            </svg>
+        </div>
+        <div class="company-info">
+            <div class="company-name-text">Genv Tech Solutions Pvt. Ltd.</div>
+            Ward No. 4, Malangwa, Sarlahi, Nepal<br>
+            <strong>Regd No:</strong> 403397/83/84 | <strong>PAN:</strong> 624718602<br>
+            <strong>Ph:</strong> +977-[Your Phone] | <strong>Web:</strong> genvtechsolutions.com.np
+        </div>
+    </div>
+
+    <!-- METADATA -->
+    <div class="ref-date">
+        <div>Ref No: 01/083/84</div>
+        <div>Date: _________________</div>
+    </div>
+
+    <!-- BODY -->
+    <div class="letter-body">
+        <h2>Application for Domain Registration (.com.np)</h2>
+        <br>
+        <p><strong>To,</strong><br>
+        The Hostmaster<br>
+        Mercantile Communications Pvt. Ltd.<br>
+        Durbar Marg, Kathmandu, Nepal</p>
+        <br>
+        <p>Dear Sir/Madam,</p>
+        
+        <p>I am writing to formally request the registration of the domain name <strong>genvtechsolutions.com.np</strong> for our company, Genv Tech Solutions Pvt. Ltd.</p>
+        
+        <p>Our company is a legally registered IT firm under the Office of the Company Registrar, Government of Nepal (Registration Number: 403397/83/84) and holds a valid PAN certificate (PAN: 624718602). We are based in Ward No. 4, Malangwa, Sarlahi.</p>
+        
+        <p>We are excited to establish our digital presence and have submitted the necessary scanned copies of our Company Registration Certificate and PAN certificate along with this application via your online portal. We assure you that this domain will be used solely for the official business purposes of Genv Tech Solutions.</p>
+        
+        <p>We kindly request you to process our domain registration at your earliest convenience.</p>
+        
+        <p>Thank you for your time and assistance.</p>
+
+        <!-- SIGNATURE & STAMP -->
+        <div class="auth-area">
+            <div class="signature-block">
+                <p>Sincerely,</p>
+                <br><br><br>
+                <div class="signature-line"></div>
+                <strong>[Your Full Name]</strong><br>
+                Managing Director<br>
+                Genv Tech Solutions Pvt. Ltd.
+            </div>
+            
+            <!-- Target area for physical stamp -->
+            <div class="stamp-block">
+                [ Place Official<br>Company Stamp Here ]
+            </div>
+        </div>
+    </div>
+
+    <!-- FOOTER -->
+    <div class="footer">
+        Genv Tech Solutions Pvt. Ltd. | Ward No. 4, Malangwa, Sarlahi, Nepal | PAN: 624718602 
+    </div>
+
+</div>
+
+</body>
+</html>
