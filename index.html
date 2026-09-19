@@ -1,50 +1,171 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Genv Tech - Official Letterhead</title>
+    <meta charset="UTF-8">
+    <title>Genv Tech Solutions - Official Letterhead</title>
     <style>
-        /* A4 Print Setup */
+        /* --- CSS Variables for Maintainability --- */
+        :root {
+            --text-primary: #0f172a;
+            --text-secondary: #475569;
+            --text-muted: #64748b;
+            --border-color: #cbd5e1;
+            --accent-color: #8b5cf6;
+        }
+
+        /* --- Global & Print Setup --- */
         @page { size: A4; margin: 0; }
-        body { font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; background-color: #e2e8f0; margin: 0; padding: 20px; display: flex; justify-content: center; }
+        body { 
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif; 
+            background-color: #e2e8f0; 
+            margin: 0; 
+            padding: 20px; 
+            display: flex; 
+            justify-content: center; 
+            color: var(--text-primary);
+        }
         
-        /* The Physical Paper */
-        .a4-sheet { background-color: white; width: 210mm; min-height: 297mm; padding: 25mm 20mm; box-sizing: border-box; box-shadow: 0 4px 15px rgba(0,0,0,0.1); position: relative; }
+        /* --- The Physical Paper (Strict A4 Enforcement) --- */
+        .a4-sheet { 
+            background-color: white; 
+            width: 210mm; 
+            height: 297mm; /* Changed from min-height to strict height */
+            padding: 20mm; /* Reduced from 25mm to give more content space */
+            box-sizing: border-box; 
+            box-shadow: 0 8px 25px rgba(0,0,0,0.08); 
+            position: relative; 
+            overflow: hidden; /* Prevents anything from pushing past 1 page */
+        }
         
-        /* Letterhead Header */
-        .header { display: flex; justify-content: space-between; align-items: flex-start; border-bottom: 2px solid #1e293b; padding-bottom: 15px; margin-bottom: 25px; }
-        .logo-area { width: 280px; } /* Widened to fit the corrected Pulse Ring spacing */
-        .company-info { text-align: right; color: #475569; font-size: 11px; line-height: 1.6; padding-top: 5px; }
-        .company-info strong { color: #1e293b; }
-        .company-name-text { font-size: 16px; font-weight: 800; color: #1e293b; margin-bottom: 3px; text-transform: uppercase; letter-spacing: 0.5px; }
+        /* --- Professional Watermark --- */
+        .watermark {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            opacity: 0.03; 
+            z-index: 0;
+            pointer-events: none;
+        }
 
-        /* Letter Content */
-        .ref-date { display: flex; justify-content: space-between; font-weight: 700; margin-bottom: 40px; font-size: 13px; color: #1e293b; }
-        .letter-body { font-size: 14px; line-height: 1.6; color: #1e293b; }
-        .letter-body h2 { font-size: 15px; text-align: center; text-decoration: underline; margin-bottom: 30px; text-transform: uppercase;}
-        .letter-body p { margin-bottom: 15px; text-align: justify; }
+        /* --- Header Section --- */
+        header { 
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-start; 
+            border-bottom: 2px solid var(--text-primary); 
+            padding-bottom: 12px; 
+            margin-bottom: 25px; /* Tightened spacing */
+            position: relative;
+            z-index: 1;
+        }
+        .logo-area { width: 280px; } 
+        .company-info { 
+            text-align: right; 
+            color: var(--text-secondary); 
+            font-size: 11px; 
+            line-height: 1.5; 
+            padding-top: 5px; 
+        }
+        .company-info strong { color: var(--text-primary); }
+        .company-name-text { 
+            font-size: 16px; 
+            font-weight: 800; 
+            color: var(--text-primary); 
+            margin-bottom: 3px; 
+            text-transform: uppercase; 
+            letter-spacing: 0.5px; 
+        }
+
+        /* --- Main Content Section --- */
+        main {
+            position: relative;
+            z-index: 1;
+        }
+        .ref-date { 
+            display: flex; 
+            justify-content: space-between; 
+            font-weight: 700; 
+            margin-bottom: 30px; /* Tightened spacing */
+            font-size: 13px; 
+        }
+        .letter-body { 
+            font-size: 13.5px; /* Slightly reduced for better fit */
+            line-height: 1.6; 
+            color: var(--text-primary); 
+        }
+        .letter-body h2 { 
+            font-size: 15px; 
+            text-align: center; 
+            text-decoration: underline; 
+            margin-top: 0;
+            margin-bottom: 25px; /* Tightened spacing */
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .letter-body p { 
+            margin-bottom: 14px; /* Tightened spacing */
+            text-align: justify; 
+        }
         
-        /* Signature & Stamp Area */
-        .auth-area { margin-top: 50px; display: flex; justify-content: space-between; align-items: flex-end; }
-        .signature-block { width: 250px; }
-        .signature-line { width: 100%; border-bottom: 1px solid #1e293b; margin-bottom: 8px; }
-        .stamp-block { width: 150px; height: 150px; border: 1px dashed #cbd5e1; border-radius: 50%; display: flex; justify-content: center; align-items: center; color: #94a3b8; font-size: 11px; text-align: center; }
+        /* --- Signature & Invisible Stamp Area --- */
+        .auth-area { 
+            margin-top: 35px; /* Reduced to pull signature up */
+            display: flex; 
+            justify-content: space-between; 
+            align-items: flex-end; 
+        }
+        .signature-block { width: 240px; }
+        .signature-space { height: 60px; } /* Replaces the <br> tags for exact control */
+        .signature-line { 
+            width: 100%; 
+            border-bottom: 1px solid var(--text-primary); 
+            margin-bottom: 6px; 
+        }
+        .signature-block strong { font-size: 13px; }
+        .signature-block span { font-size: 11px; color: var(--text-secondary); }
+        
+        /* Reserved blank space for physical stamping */
+        .stamp-block { width: 140px; height: 120px; }
 
-        /* Footer */
-        .footer { position: absolute; bottom: 15mm; left: 20mm; right: 20mm; text-align: center; font-size: 10px; color: #64748b; border-top: 1px solid #e2e8f0; padding-top: 10px; }
+        /* --- Footer Section --- */
+        footer { 
+            position: absolute; 
+            bottom: 15mm; 
+            left: 20mm; 
+            right: 20mm; 
+            text-align: center; 
+            font-size: 10px; 
+            color: var(--text-muted); 
+            border-top: 1px solid var(--border-color); 
+            padding-top: 10px; 
+            z-index: 1;
+        }
+        footer strong { color: var(--text-secondary); }
 
-        /* Browser Print Override */
+        /* --- Clean Print Overrides --- */
         @media print {
-            body { background: none; padding: 0; }
-            .a4-sheet { box-shadow: none; width: 100%; height: 100%; padding: 25mm 20mm; }
+            body { background: white; padding: 0; margin: 0; }
+            .a4-sheet { box-shadow: none; margin: 0; }
+            * { -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; }
         }
     </style>
 </head>
 <body>
 
 <div class="a4-sheet">
+
+    <!-- SUBTLE WATERMARK (Icon Only) -->
+    <svg class="watermark" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 150 140">
+        <circle cx="75" cy="70" r="46" fill="none" stroke="#0f172a" stroke-width="8" stroke-dasharray="75 15 25 15 30 25" stroke-linecap="round" transform="rotate(-45 75 70)"/>
+        <path d="M 55 48 L 95 48" stroke="#0f172a" stroke-width="12" stroke-linecap="round"/>
+        <path d="M 55 68 L 72 68" stroke="#0f172a" stroke-width="12" stroke-linecap="round"/>
+        <path d="M 55 88 L 95 88 L 95 68 L 86 68" fill="none" stroke="#0f172a" stroke-width="12" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
     
     <!-- HEADER -->
-    <div class="header">
+    <header>
         <div class="logo-area">
             <!-- Finalized Pulse Ring Master SVG -->
             <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 550 140" width="100%" height="auto">
@@ -53,7 +174,7 @@
                         <stop offset="0%" style="stop-color:#d946ef;stop-opacity:1" />
                         <stop offset="50%" style="stop-color:#a855f7;stop-opacity:1" />
                         <stop offset="100%" style="stop-color:#6366f1;stop-opacity:1" />
-                    </linearGradient>
+                    </linear.Gradient>
                 </defs>
                 <circle cx="75" cy="70" r="46" fill="none" stroke="url(#grad11_2)" stroke-width="8" stroke-dasharray="75 15 25 15 30 25" stroke-linecap="round" transform="rotate(-45 75 70)"/>
                 <path d="M 55 48 L 95 48" stroke="#0f172a" stroke-width="12" stroke-linecap="round"/>
@@ -68,59 +189,59 @@
             <div class="company-name-text">Genv Tech Solutions Pvt. Ltd.</div>
             Ward No. 4, Malangwa, Sarlahi, Nepal<br>
             <strong>Regd No:</strong> 403397/83/84 | <strong>PAN:</strong> 624718602<br>
-            <strong>Ph:</strong> +977-[Your Phone] | <strong>Web:</strong> genvtechsolutions.com.np
+            <strong>Ph:</strong> +977 9808451265
         </div>
-    </div>
+    </header>
 
-    <!-- METADATA -->
-    <div class="ref-date">
-        <div>Ref No: 01/083/84</div>
-        <div>Date: _________________</div>
-    </div>
+    <main>
+        <!-- METADATA -->
+        <div class="ref-date">
+            <div>Ref No: 01/083/84</div>
+            <div>Date: September 20, 2026</div>
+        </div>
 
-    <!-- BODY -->
-    <div class="letter-body">
-        <h2>Application for Domain Registration (.com.np)</h2>
-        <br>
-        <p><strong>To,</strong><br>
-        The Hostmaster<br>
-        Mercantile Communications Pvt. Ltd.<br>
-        Durbar Marg, Kathmandu, Nepal</p>
-        <br>
-        <p>Dear Sir/Madam,</p>
-        
-        <p>I am writing to formally request the registration of the domain name <strong>genvtechsolutions.com.np</strong> for our company, Genv Tech Solutions Pvt. Ltd.</p>
-        
-        <p>Our company is a legally registered IT firm under the Office of the Company Registrar, Government of Nepal (Registration Number: 403397/83/84) and holds a valid PAN certificate (PAN: 624718602). We are based in Ward No. 4, Malangwa, Sarlahi.</p>
-        
-        <p>We are excited to establish our digital presence and have submitted the necessary scanned copies of our Company Registration Certificate and PAN certificate along with this application via your online portal. We assure you that this domain will be used solely for the official business purposes of Genv Tech Solutions.</p>
-        
-        <p>We kindly request you to process our domain registration at your earliest convenience.</p>
-        
-        <p>Thank you for your time and assistance.</p>
-
-        <!-- SIGNATURE & STAMP -->
-        <div class="auth-area">
-            <div class="signature-block">
-                <p>Sincerely,</p>
-                <br><br><br>
-                <div class="signature-line"></div>
-                <strong>[Your Full Name]</strong><br>
-                Managing Director<br>
-                Genv Tech Solutions Pvt. Ltd.
-            </div>
+        <!-- BODY -->
+        <div class="letter-body">
+            <h2>Application for Domain Registration (.com.np)</h2>
             
-            <!-- Target area for physical stamp -->
-            <div class="stamp-block">
-                [ Place Official<br>Company Stamp Here ]
+            <p><strong>To,</strong><br>
+            The Hostmaster<br>
+            Mercantile Communications Pvt. Ltd.<br>
+            Durbar Marg, Kathmandu, Nepal</p>
+            
+            <p>Dear Sir/Madam,</p>
+            
+            <p>I am writing to formally request the registration of the domain name <strong>genvtechsolutions.com.np</strong> for our company, Genv Tech Solutions Pvt. Ltd.</p>
+            
+            <p>Our company is a legally registered IT firm under the Office of the Company Registrar, Government of Nepal (Registration Number: 403397) and holds a valid PAN certificate (PAN: 624718602). We are based in Ward No. 4, Malangwa, Sarlahi.</p>
+            
+            <p>We are excited to establish our digital presence and have submitted the necessary scanned copies of our Company Registration Certificate and PAN certificate along with this application via your online portal. We assure you that this domain will be used solely for the official business purposes of Genv Tech Solutions.</p>
+            
+            <p>We kindly request you to process our domain registration at your earliest convenience.</p>
+            
+            <p>Thank you for your time and assistance.</p>
+
+            <!-- SIGNATURE & STAMP -->
+            <div class="auth-area">
+                <div class="signature-block">
+                    <p style="margin-bottom: 0;">Sincerely,</p>
+                    <div class="signature-space"></div> <!-- Controlled exact height -->
+                    <div class="signature-line"></div>
+                    <strong>Gayanand Patel</strong><br>
+                    <span>Managing Director</span><br>
+                    <span>Genv Tech Solutions Pvt. Ltd.</span>
+                </div>
+                
+                <!-- Pure invisible spacing for the physical stamp -->
+                <div class="stamp-block"></div>
             </div>
         </div>
-    </div>
+    </main>
 
     <!-- FOOTER -->
-    <div class="footer">
-        Genv Tech Solutions Pvt. Ltd. | Ward No. 4, Malangwa, Sarlahi, Nepal | PAN: 624718602 
-    </div>
+    <footer>
+        <strong>Genv Tech Solutions Pvt. Ltd.</strong> | Ward No. 4, Malangwa, Sarlahi, Nepal | PAN: 624718602 
+    </footer>
 
 </div>
 
